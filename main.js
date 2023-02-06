@@ -45,6 +45,7 @@ function changeRates(rates) {
             result.value = ((input.value) / (rates.GBP.Value)).toFixed(2);
         }
     })
+    
     input.addEventListener('input', function () {
         if (select.value === 'USD') {
             result.value = ((input.value) / (rates.USD.Value)).toFixed(2);
@@ -52,7 +53,17 @@ function changeRates(rates) {
             result.value = ((input.value) / (rates.EUR.Value)).toFixed(2);
         } else if (select.value === 'GBP') {
             result.value = ((input.value) / (rates.GBP.Value)).toFixed(2);
-        }
+        };
+    });
+
+    result.addEventListener('input', function () {
+        if (select.value === 'USD') {
+            input.value = ((result.value) * (rates.USD.Value)).toFixed(2);
+        } else if (select.value === 'EUR') {
+            input.value = ((result.value) * (rates.EUR.Value)).toFixed(2);
+        } else if (select.value === 'GBP') {
+            input.value = ((result.value) * (rates.GBP.Value)).toFixed(2);
+        };
     });
 };
 
@@ -78,6 +89,6 @@ function changeColor(rates) {
         GBPRate.classList.add('top')
     } else if (rates.GBP.Previous > rates.GBP.Value) {
         GBPRate.classList.remove('top')
-        GBPRate.classList.add('bottom')
+        GBPRate.classList.add("bottom")
     };
 };
